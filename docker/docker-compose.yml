@@ -4,32 +4,32 @@ services:
     image: todotests
     # container_name: todotests
     depends_on:
-      - frontend
-      - backend
+      - todofront
+      - todoback
     environment:
       - FRONT_HOST=todofront
-    networks:
-      - redewww
+    # networks:
+    #   - redewww
     # ...
   todofront:
     image: todofrontend
     # container_name: todofront
     depends_on:
-      - backend
+      - todoback
     ports:
       - 3000:3000
     environment:
       - REACT_APP_API_HOST=todoback
-      - REACT_APP_API_PORT=3001
-    networks:
-      - redewww
+      # - REACT_APP_API_PORT=3001
+    # networks:
+    #   - redewww
     # ...
   todoback:
     image: todobackend
     ports:
       - 3001:3001
     # container_name: todoback
-    networks:
-      - redewww
-networks:
-  redewww:
+#     networks:
+#       - redewww
+# networks:
+#   redewww:
